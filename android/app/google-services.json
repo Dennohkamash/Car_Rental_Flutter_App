@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "672138384804",
+    "project_id": "car-fix-e0bb2",
+    "storage_bucket": "car-fix-e0bb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672138384804:android:624a432caccd35b3d2dd31",
+        "android_client_info": {
+          "package_name": "com.example.myapp1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672138384804-6bidiskc0epl6n4il5ggffimhto3i8h1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQdm1d4MrWX6MXiV6NMfaKbLXkSFN1rUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672138384804-6bidiskc0epl6n4il5ggffimhto3i8h1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
