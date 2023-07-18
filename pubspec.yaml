@@ -49,6 +49,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  simple_gradient_text: ^1.2.4
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -65,6 +66,15 @@ flutter:
   assets:
     - assets/carfix3.jpg
     - assets/google.png
+    - assets/carmovingcolor.gif
+    - assets/carservice.gif
+    - assets/servicing_cardimage.jpg
+    - assets/service3.jpg
+    - assets/engineservice.jpeg
+    - assets/oilservice.jpg
+    - assets/gasservice.jpg
+    - assets/brakeservice.jpg
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

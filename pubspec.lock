@@ -208,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  simple_gradient_text:
+    dependency: "direct dev"
+    description:
+      name: simple_gradient_text
+      sha256: "075a2cbabac021d3713d0d199b2d1b0d40f6293e1e9d37b25e84936ae43c90fa"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.4"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -287,4 +295,4 @@ packages:
     version: "0.1.1"
 sdks:
   dart: ">=2.19.5 <3.0.0"
-  flutter: ">=1.20.0"
+  flutter: ">=2.5.0"
