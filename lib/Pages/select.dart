@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-import 'main_page.dart';
+import 'package:myapp1/Auth/main_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

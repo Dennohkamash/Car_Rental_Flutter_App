@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+
+import 'package:myapp1/Services/auth_service.dart';
 
 class Registerpage extends StatefulWidget {
   final VoidCallback showloginpage;
@@ -17,6 +20,7 @@ class _RegisterpageState extends State<Registerpage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final passwordconfirmController = TextEditingController();
+  late final Function()? onTap;
   @override
   void dispose() {
     emailController.dispose();
@@ -204,18 +208,20 @@ class _RegisterpageState extends State<Registerpage> {
             ),
             const SizedBox(height: 35),
             Center(
-              child: Container(
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(16),
-                    color: Colors.grey[200]),
-                child: Image.asset(
-                  "google.png",
-                  width: 50,
-                  height: 50,
-                ),
-              ),
+              child: GestureDetector(
+                  onTap: () => AuthService().signInWithGoogle(),
+                  child: Container(
+                    padding: EdgeInsets.all(15),
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(16),
+                        color: Colors.grey[200]),
+                    child: Image.asset(
+                      "google.png",
+                      width: 50,
+                      height: 50,
+                    ),
+                  )),
             ),
             const SizedBox(height: 20),
             Padding(

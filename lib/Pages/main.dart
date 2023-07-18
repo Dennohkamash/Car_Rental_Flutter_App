@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main_page.dart';
+import 'package:myapp1/Auth/main_page.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../firebase_options.dart';

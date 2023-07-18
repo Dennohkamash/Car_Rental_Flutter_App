@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp1/Services/auth_service.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'forgotpass.dart';
 import 'register_page.dart';
 
@@ -16,6 +18,7 @@ class Loginpage extends StatefulWidget {
 class _LoginpageState extends State<Loginpage> {
   bool _passwordVisible = false;
   String? errorMessage;
+  late final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -186,16 +189,19 @@ class _LoginpageState extends State<Loginpage> {
             ),
             const SizedBox(height: 35),
             Center(
-              child: Container(
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(16),
-                    color: Colors.grey[200]),
-                child: Image.asset(
-                  "google.png",
-                  width: 50,
-                  height: 50,
+              child: GestureDetector(
+                onTap: () => AuthService().signInWithGoogle(),
+                child: Container(
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(16),
+                      color: Colors.grey[200]),
+                  child: Image.asset(
+                    "google.png",
+                    width: 50,
+                    height: 50,
+                  ),
                 ),
               ),
             ),

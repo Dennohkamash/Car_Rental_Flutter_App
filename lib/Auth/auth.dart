@@ -1,7 +1,7 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'Login.dart';
-import 'register_page.dart';
+import 'package:myapp1/Pages/Login.dart';
+import 'package:myapp1/Pages/register_page.dart';
 
 class Authepage extends StatefulWidget {
   const Authepage({super.key});
