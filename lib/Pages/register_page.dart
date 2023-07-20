@@ -1,9 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 import 'package:myapp1/Services/auth_service.dart';
 
@@ -60,7 +56,7 @@ class _RegisterpageState extends State<Registerpage> {
               height: 180,
             ),
             const SizedBox(height: 10),
-            Text("Welcome to Kamash's Car Clinic, Register bellow!"),
+            const Text("Welcome to Kamash's Car Clinic, Register bellow!"),
             const SizedBox(height: 25),
 
             // username text field
@@ -173,12 +169,12 @@ class _RegisterpageState extends State<Registerpage> {
               child: GestureDetector(
                   onTap: signUp,
                   child: Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Sign Up",
                         style: TextStyle(
@@ -211,7 +207,7 @@ class _RegisterpageState extends State<Registerpage> {
               child: GestureDetector(
                   onTap: () => AuthService().signInWithGoogle(),
                   child: Container(
-                    padding: EdgeInsets.all(15),
+                    padding: const EdgeInsets.all(15),
                     decoration: BoxDecoration(
                         border: Border.all(color: Colors.white),
                         borderRadius: BorderRadius.circular(16),
@@ -228,10 +224,10 @@ class _RegisterpageState extends State<Registerpage> {
               padding: const EdgeInsets.symmetric(horizontal: 74.0),
               child: Row(
                 children: [
-                  Text("Already have an account?"),
+                  const Text("Already have an account?"),
                   GestureDetector(
                       onTap: widget.showloginpage,
-                      child: Text(
+                      child: const Text(
                         "Login",
                         style: TextStyle(
                           color: Colors.blue,

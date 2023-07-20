@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
     await FirebaseAuth.instance.signOut();
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => Authpage()),
+      MaterialPageRoute(builder: (context) => const Authpage()),
     );
   }
 
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(0, 196, 103, 103),
+        backgroundColor: const Color.fromARGB(0, 196, 103, 103),
         elevation: 0,
       ),
       drawer: Drawer(
@@ -40,29 +40,29 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              currentAccountPicture: CircleAvatar(),
+              currentAccountPicture: const CircleAvatar(),
               accountEmail: Text("${_user.displayName ?? _user.email}"),
               accountName: null,
             ),
-            ListTile(
+            const ListTile(
               title: Text("Vehicle Dashboard"),
               leading: Icon(Icons.speed),
             ),
-            ListTile(
+            const ListTile(
               title: Text("Reminder"),
               leading: Icon(Icons.lock_clock),
             ),
-            ListTile(
+            const ListTile(
               title: Text("Maps"),
               leading: Icon(Icons.map),
             ),
-            ListTile(
+            const ListTile(
               title: Text("Help"),
               leading: Icon(Icons.help_center),
             ),
             ListTile(
-              title: Text("Logout"),
-              leading: Icon(Icons.logout),
+              title: const Text("Logout"),
+              leading: const Icon(Icons.logout),
               onTap: _logout,
             ),
           ],
@@ -86,7 +86,7 @@ class _HomePageState extends State<HomePage> {
               fit: BoxFit.cover,
               width: double.infinity,
             ),
-            SizedBox(
+            const SizedBox(
               height: 35,
             ),
             Row(
@@ -117,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                               size: 45,
                               color: Colors.pink[700],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Text(
@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ServicePage()));
+                                builder: (context) => const ServicePage()));
                       },
                       child: Container(
                         decoration: BoxDecoration(
@@ -158,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                               size: 45,
                               color: Colors.green[700],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Text(

@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:myapp1/Services/auth_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:myapp1/Pages/select.dart';
+// import 'package:myapp1/Services/auth_service.dart';
 import 'forgotpass.dart';
-import 'register_page.dart';
 
 class Loginpage extends StatefulWidget {
   final VoidCallback showRegisterPage;
@@ -19,6 +19,19 @@ class _LoginpageState extends State<Loginpage> {
   bool _passwordVisible = false;
   String? errorMessage;
   late final Function()? onTap;
+  Future<void> signInWithGoogle() async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    final UserCredential userCredential =
+        await auth.signInWithCredential(credential);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,10 +125,10 @@ class _LoginpageState extends State<Loginpage> {
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
-                        return forgotpasswordpage();
+                        return const forgotpasswordpage();
                       }));
                     },
-                    child: Text(
+                    child: const Text(
                       'Forgot Password?',
                       style: TextStyle(color: Colors.blue),
                     ),
@@ -159,14 +172,14 @@ class _LoginpageState extends State<Loginpage> {
                       });
                     }
                   },
-                  child: Text("Login")),
+                  child: const Text("Login")),
             ),
             if (errorMessage != null)
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: Text(
                   errorMessage!,
-                  style: TextStyle(color: Colors.red),
+                  style: const TextStyle(color: Colors.red),
                 ),
               ),
             const SizedBox(height: 35),
@@ -190,9 +203,15 @@ class _LoginpageState extends State<Loginpage> {
             const SizedBox(height: 35),
             Center(
               child: GestureDetector(
-                onTap: () => AuthService().signInWithGoogle(),
+                onTap: () async {
+                  await signInWithGoogle();
+                  if (mounted) {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (_) => const HomePage()));
+                  }
+                },
                 child: Container(
-                  padding: EdgeInsets.all(15),
+                  padding: const EdgeInsets.all(15),
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(16),
@@ -210,10 +229,10 @@ class _LoginpageState extends State<Loginpage> {
               padding: const EdgeInsets.symmetric(horizontal: 74.0),
               child: Row(
                 children: [
-                  Text("Don't have an account?"),
+                  const Text("Don't have an account?"),
                   GestureDetector(
                       onTap: widget.showRegisterPage,
-                      child: Text(
+                      child: const Text(
                         "SignUp",
                         style: TextStyle(
                           color: Colors.blue,

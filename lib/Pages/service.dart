@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 class ServicePage extends StatefulWidget {
+  const ServicePage({super.key});
+
   @override
   _ServicePageState createState() => _ServicePageState();
 }
@@ -60,11 +62,11 @@ class _ServicePageState extends State<ServicePage> {
           alignment: Alignment.center,
           child: GradientText(
             "Our Services",
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 25,
               fontWeight: FontWeight.bold,
             ),
-            colors: [
+            colors: const [
               Color(0xFFFF1000),
               Color(0xFF2508FF),
             ],
@@ -73,7 +75,7 @@ class _ServicePageState extends State<ServicePage> {
         ),
       ),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -82,30 +84,30 @@ class _ServicePageState extends State<ServicePage> {
                 children: <Widget>[
                   Container(
                     height: 2.5,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(colors: <Color>[
                         Color(0xFF2508FF),
                         Color(0xFFFF1000)
                       ]),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(
                     children: <Widget>[
                       GradientText("how can we help you?",
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                           ),
-                          colors: [
+                          colors: const [
                             Color(0xFF2508FF),
                             Color(0xFFFF1000),
                           ]),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Container(
@@ -118,7 +120,7 @@ class _ServicePageState extends State<ServicePage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        Row(
+                        const Row(
                           children: <Widget>[
                             SizedBox(
                               width: 15,
@@ -137,7 +139,7 @@ class _ServicePageState extends State<ServicePage> {
                             borderRadius: BorderRadius.circular(25),
                             color: Colors.orange,
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Icon(
                               Icons.search,
                               size: 23,
@@ -148,10 +150,10 @@ class _ServicePageState extends State<ServicePage> {
                       ],
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Container(
+                  SizedBox(
                     height: MediaQuery.of(context).size.height * 0.25,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
@@ -159,7 +161,7 @@ class _ServicePageState extends State<ServicePage> {
                       itemBuilder: (context, index) {
                         return Stack(
                           children: <Widget>[
-                            Container(
+                            SizedBox(
                               width: MediaQuery.of(context).size.width - 40,
                               child: Card(
                                 color: Colors.transparent,
@@ -182,7 +184,7 @@ class _ServicePageState extends State<ServicePage> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Container(
@@ -192,13 +194,13 @@ class _ServicePageState extends State<ServicePage> {
                                   ),
                                   child: Text(
                                     offersvalue[index],
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 20,
                                         color: Colors.red,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 3,
                                 ),
                                 Container(
@@ -208,13 +210,13 @@ class _ServicePageState extends State<ServicePage> {
                                   ),
                                   child: Text(
                                     offers[index],
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 15,
                                         color: Colors.red,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 3,
                                 ),
                                 Container(
@@ -224,13 +226,13 @@ class _ServicePageState extends State<ServicePage> {
                                   ),
                                   child: Text(
                                     offercodes[index],
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 15,
                                         color: Colors.black,
                                         fontWeight: FontWeight.bold),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                               ],
@@ -245,7 +247,7 @@ class _ServicePageState extends State<ServicePage> {
                       Expanded(
                         child: Container(
                           height: 2.5,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(colors: <Color>[
                               Color(0xFFFF1000),
                               Color(0xFF2508FF)
@@ -253,11 +255,11 @@ class _ServicePageState extends State<ServicePage> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 50),
+                      const SizedBox(height: 50),
                       GradientText("All Services  ",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 15, fontWeight: FontWeight.normal),
-                          colors: [
+                          colors: const [
                             Color(0xFFFF1000),
                             Color(0xFF2508FF),
                             Color(0xFFFF1000),
@@ -265,7 +267,7 @@ class _ServicePageState extends State<ServicePage> {
                       Expanded(
                         child: Container(
                           height: 2.5,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(colors: <Color>[
                               Color(0xFF2508FF),
                               Color(0xFFFF1000)
@@ -282,7 +284,7 @@ class _ServicePageState extends State<ServicePage> {
 //------------------------------------------------------------------------------------
 
             SingleChildScrollView(
-              child: Container(
+              child: SizedBox(
                 height: MediaQuery.of(context).size.height / 2.8,
                 child: Expanded(
                   child: ListView.builder(
@@ -310,13 +312,13 @@ class _ServicePageState extends State<ServicePage> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Flexible(
                                     child: Text(
                                       servicesnameleft[index],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
@@ -346,13 +348,13 @@ class _ServicePageState extends State<ServicePage> {
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Flexible(
                                     child: Text(
                                       servicesnameright[index],
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.black,
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),

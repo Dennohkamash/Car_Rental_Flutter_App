@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class forgotpasswordpage extends StatefulWidget {
   const forgotpasswordpage({super.key});
@@ -25,7 +23,7 @@ class _forgotpasswordpageState extends State<forgotpasswordpage> {
       showDialog(
           context: context,
           builder: (context) {
-            return AlertDialog(
+            return const AlertDialog(
               content: Text("Password Reset link sent! Check you Email"),
             );
           });
@@ -48,8 +46,8 @@ class _forgotpasswordpageState extends State<forgotpasswordpage> {
         elevation: 0,
       ),
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 25.0),
           child: Text(
             "Enter your Email and we will send you a password reset link",
             style: TextStyle(
@@ -58,7 +56,7 @@ class _forgotpasswordpageState extends State<forgotpasswordpage> {
             textAlign: TextAlign.center,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         Padding(
@@ -86,16 +84,16 @@ class _forgotpasswordpageState extends State<forgotpasswordpage> {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         MaterialButton(
           onPressed: passwordReset,
-          child: Text(
+          color: Colors.blue,
+          child: const Text(
             "Reset Password",
             style: TextStyle(color: Colors.white),
           ),
-          color: Colors.blue,
         )
       ]),
       backgroundColor: const Color.fromARGB(255, 223, 218, 218),

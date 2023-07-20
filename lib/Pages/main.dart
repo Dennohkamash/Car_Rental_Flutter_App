@@ -9,21 +9,25 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(),
-      home: MyPage(),
+      home: const MyPage(),
     );
   }
 }
 
 class MyPage extends StatefulWidget {
+  const MyPage({super.key});
+
   @override
   _MyPageState createState() => _MyPageState();
 }
@@ -35,7 +39,7 @@ class _MyPageState extends State<MyPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: ListTile(
+        title: const ListTile(
           trailing: Icon(
             Icons.clear_all,
             color: Colors.black,
@@ -44,13 +48,13 @@ class _MyPageState extends State<MyPage> {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               GradientText(
                 "Rent or",
-                style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                 colors: const [
                   Colors.blue,
                   Colors.red,
@@ -59,14 +63,14 @@ class _MyPageState extends State<MyPage> {
               ),
               GradientText(
                 "Service your Car",
-                style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
                 colors: const [
                   Colors.blue,
                   Colors.red,
                   Colors.teal,
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Image.asset(
@@ -77,7 +81,7 @@ class _MyPageState extends State<MyPage> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(23.0),
-                  gradient: LinearGradient(colors: [
+                  gradient: const LinearGradient(colors: [
                     Color(0xFFFF1000),
                     Color(0xFF2508FF),
                   ], begin: Alignment.centerRight, end: Alignment.centerLeft),
@@ -88,11 +92,11 @@ class _MyPageState extends State<MyPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Authpage()),
+                      MaterialPageRoute(builder: (context) => const Authpage()),
                     );
                   },
                   // color: Colors.transparent,
-                  child: Text(
+                  child: const Text(
                     "Get Started",
                     style: TextStyle(
                         color: Colors.white,
