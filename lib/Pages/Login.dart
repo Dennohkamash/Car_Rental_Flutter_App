@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:myapp1/Pages/select.dart';
-// import 'package:myapp1/Services/auth_service.dart';
+
 import 'forgotpass.dart';
 
 class Loginpage extends StatefulWidget {
@@ -20,15 +20,20 @@ class _LoginpageState extends State<Loginpage> {
   String? errorMessage;
   late final Function()? onTap;
   Future<void> signInWithGoogle() async {
+    //create an instance of the firebase auth and google signin
     FirebaseAuth auth = FirebaseAuth.instance;
     final GoogleSignIn googleSignIn = GoogleSignIn();
+    //trigger the authentication flow
     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    //obtain the auth detail from the request
     final GoogleSignInAuthentication googleAuth =
         await googleUser!.authentication;
+    //create a new credentials
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
+    //sign in the user with the credentials
     final UserCredential userCredential =
         await auth.signInWithCredential(credential);
   }

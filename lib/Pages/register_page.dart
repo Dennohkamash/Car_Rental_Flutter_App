@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
-import 'package:myapp1/Services/auth_service.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class Registerpage extends StatefulWidget {
   final VoidCallback showloginpage;
@@ -17,6 +16,25 @@ class _RegisterpageState extends State<Registerpage> {
   final passwordController = TextEditingController();
   final passwordconfirmController = TextEditingController();
   late final Function()? onTap;
+  Future<void> signInWithGoogle() async {
+    //create an instance of the firebase auth and google signin
+    FirebaseAuth auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+    //trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+    //obtain the auth detail from the request
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser!.authentication;
+    //create a new credentials
+    final AuthCredential credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    //sign in the user with the credentials
+    final UserCredential userCredential =
+        await auth.signInWithCredential(credential);
+  }
+
   @override
   void dispose() {
     emailController.dispose();
@@ -205,19 +223,19 @@ class _RegisterpageState extends State<Registerpage> {
             const SizedBox(height: 35),
             Center(
               child: GestureDetector(
-                  onTap: () => AuthService().signInWithGoogle(),
+                  // onTap: () => AuthService().signInWithGoogle(),
                   child: Container(
-                    padding: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.circular(16),
-                        color: Colors.grey[200]),
-                    child: Image.asset(
-                      "google.png",
-                      width: 50,
-                      height: 50,
-                    ),
-                  )),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.white),
+                    borderRadius: BorderRadius.circular(16),
+                    color: Colors.grey[200]),
+                child: Image.asset(
+                  "google.png",
+                  width: 50,
+                  height: 50,
+                ),
+              )),
             ),
             const SizedBox(height: 20),
             Padding(
