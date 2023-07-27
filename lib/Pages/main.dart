@@ -54,7 +54,8 @@ class _MyPageState extends State<MyPage> {
             children: <Widget>[
               GradientText(
                 "Rent or",
-                style: const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
                 colors: const [
                   Colors.blue,
                   Colors.red,
@@ -63,7 +64,8 @@ class _MyPageState extends State<MyPage> {
               ),
               GradientText(
                 "Service your Car",
-                style: const TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
                 colors: const [
                   Colors.blue,
                   Colors.red,
