@@ -1,15 +1,16 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:myapp1/Pages/dashboard.dart';
 import 'package:myapp1/Pages/select.dart';
 
 import 'forgotpass.dart';
 
 class Loginpage extends StatefulWidget {
   final VoidCallback showRegisterPage;
+
   Loginpage({Key? key, required this.showRegisterPage}) : super(key: key);
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
 
   @override
   State<Loginpage> createState() => _LoginpageState();
@@ -18,6 +19,8 @@ class Loginpage extends StatefulWidget {
 class _LoginpageState extends State<Loginpage> {
   bool _passwordVisible = false;
   String? errorMessage;
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   late final Function()? onTap;
   Future<void> signInWithGoogle() async {
     //create an instance of the firebase auth and google signin
@@ -38,10 +41,61 @@ class _LoginpageState extends State<Loginpage> {
         await auth.signInWithCredential(credential);
   }
 
+  void signIn() async {
+    if (emailController.text.isEmpty || passwordController.text.isEmpty) {
+      setState(() {
+        errorMessage = 'Please enter both email and password';
+      });
+      return;
+    }
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+      User? user = FirebaseAuth.instance.currentUser;
+      var userSnapshot = await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(user!.uid)
+          .get();
+
+      if (userSnapshot.exists) {
+        String? userRole = userSnapshot.get('Role');
+        if (userRole == 'Renting Client') {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => HomePage()),
+            (route) => false, // Remove all previous routes from the stack
+          );
+        } else if (userRole == 'Car Owner') {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => Ownerpage()),
+            (route) => false, // Remove all previous routes from the stack
+          );
+        } else {
+          // Handle unknown role or any other cases
+        }
+      } else {
+        // Handle the case when user data (Role) is not found in Firestore
+      }
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+          errorMessage = 'Invalid email or password';
+        } else {
+          errorMessage = 'An error occurred. Please try again later.';
+        }
+      });
+    } catch (e) {
+      setState(() {
+        errorMessage = 'An error occurred. Please try again later.';
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    var emailController = widget.emailController;
-    var passwordController = widget.passwordController;
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 223, 218, 218),
       body: Center(
@@ -121,63 +175,27 @@ class _LoginpageState extends State<Loginpage> {
               ),
             ),
             const SizedBox(height: 15),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const forgotpasswordpage();
-                      }));
-                    },
-                    child: const Text(
-                      'Forgot Password?',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 5),
             SizedBox(
               width: 80,
-              child: ElevatedButton(
-                  onPressed: () async {
-                    if (emailController.text.isEmpty ||
-                        passwordController.text.isEmpty) {
-                      setState(() {
-                        errorMessage = 'Please enter both email and password';
-                      });
-                      return;
-                    }
-                    try {
-                      final credential = await FirebaseAuth.instance
-                          .signInWithEmailAndPassword(
-                        email: emailController.text,
-                        password: passwordController.text,
-                      );
-                      // ... handle successful login ...
-                    } on FirebaseAuthException catch (e) {
-                      setState(() {
-                        if (e.code == 'user-not-found' ||
-                            e.code == 'wrong-password') {
-                          errorMessage = 'Invalid email or password';
-                        } else {
-                          errorMessage =
-                              'An error occurred. Please try again later.';
-                        }
-                      });
-                    } catch (e) {
-                      setState(() {
-                        errorMessage =
-                            'An error occurred. Please try again later.';
-                      });
-                    }
-                  },
-                  child: const Text("Login")),
+              child: GestureDetector(
+                onTap: signIn,
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Center(
+                    child: Text(
+                      "Sign Up",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
             if (errorMessage != null)
               Padding(

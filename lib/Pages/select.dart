@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
     await FirebaseAuth.instance.signOut();
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const Authpage()),
+      MaterialPageRoute(builder: (context) => const AuthPage()),
     );
   }
 

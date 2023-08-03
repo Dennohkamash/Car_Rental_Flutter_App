@@ -94,7 +94,7 @@ class _MyPageState extends State<MyPage> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Authpage()),
+                      MaterialPageRoute(builder: (context) => const AuthPage()),
                     );
                   },
                   // color: Colors.transparent,

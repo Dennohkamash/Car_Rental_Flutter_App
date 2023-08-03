@@ -23,7 +23,7 @@ class _OwnerpageState extends State<Ownerpage> {
     await FirebaseAuth.instance.signOut();
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const Authpage()),
+      MaterialPageRoute(builder: (context) => const AuthPage()),
     );
   }
 
@@ -64,6 +64,7 @@ class _OwnerpageState extends State<Ownerpage> {
           ],
         ),
       ),
+      floatingActionButton: ButtonBar(),
     );
   }
 }
