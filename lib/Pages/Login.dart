@@ -103,7 +103,7 @@ class _LoginpageState extends State<Loginpage> {
           children: [
             const SizedBox(height: 55),
             Image.asset(
-              "CAR.png",
+              "logo1.png",
               width: 180,
               height: 180,
             ),
@@ -175,6 +175,27 @@ class _LoginpageState extends State<Loginpage> {
               ),
             ),
             const SizedBox(height: 15),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return const forgotpasswordpage();
+                      }));
+                    },
+                    child: const Text(
+                      'Forgot Password?',
+                      style: TextStyle(color: Colors.blue),
+                    ),
+                  )
+                ],
+              ),
+            ),
             const SizedBox(height: 5),
             SizedBox(
               width: 80,
@@ -188,7 +209,7 @@ class _LoginpageState extends State<Loginpage> {
                   ),
                   child: const Center(
                     child: Text(
-                      "Sign Up",
+                      "Login",
                       style: TextStyle(
                         color: Colors.white,
                       ),

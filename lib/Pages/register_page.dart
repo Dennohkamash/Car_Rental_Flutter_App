@@ -166,7 +166,7 @@ class _RegisterpageState extends State<Registerpage> {
             children: [
               const SizedBox(height: 5),
               Image.asset(
-                "CAR.png",
+                "logo1.png",
                 width: 180,
                 height: 180,
               ),
