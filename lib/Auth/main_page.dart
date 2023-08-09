@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:myapp1/Pages/Login.dart';
 import 'package:myapp1/Pages/dashboard.dart';
 import 'package:myapp1/Pages/select.dart';
-import 'package:myapp1/Pages/register_page.dart'; // Make sure to import the Registerpage widget.
+import 'package:myapp1/Pages/register_page.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({Key? key});

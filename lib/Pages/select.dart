@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late User _user;
+  String _displayName = '';
 
   void _logout() async {
     await FirebaseAuth.instance.signOut();
@@ -26,6 +28,23 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     _user = FirebaseAuth.instance.currentUser!;
+    _fetchUserData();
+  }
+
+  void _fetchUserData() async {
+    try {
+      DocumentSnapshot userSnapshot = await FirebaseFirestore.instance
+          .collection("Users")
+          .doc(_user.uid)
+          .get();
+
+      setState(() {
+        _displayName = userSnapshot['first name'] ??
+            ''; // Change 'first name' to the actual field name in Firestore
+      });
+    } catch (e) {
+      print('Error fetching user data: $e');
+    }
   }
 
   @override
@@ -41,8 +60,8 @@ class _HomePageState extends State<HomePage> {
           children: [
             UserAccountsDrawerHeader(
               currentAccountPicture: const CircleAvatar(),
+              accountName: Text(_displayName),
               accountEmail: Text("${_user.displayName ?? _user.email}"),
-              accountName: null,
             ),
             const ListTile(
               title: Text("Vehicle Dashboard"),

@@ -43,9 +43,11 @@ class _LoginpageState extends State<Loginpage> {
 
   void signIn() async {
     if (emailController.text.isEmpty || passwordController.text.isEmpty) {
-      setState(() {
-        errorMessage = 'Please enter both email and password';
-      });
+      if (mounted) {
+        setState(() {
+          errorMessage = 'Please enter both email and password';
+        });
+      }
       return;
     }
     try {
@@ -62,17 +64,21 @@ class _LoginpageState extends State<Loginpage> {
       if (userSnapshot.exists) {
         String? userRole = userSnapshot.get('Role');
         if (userRole == 'Renting Client') {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => HomePage()),
-            (route) => false, // Remove all previous routes from the stack
-          );
+          if (mounted) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+              (route) => false, // Remove all previous routes from the stack
+            );
+          }
         } else if (userRole == 'Car Owner') {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => Ownerpage()),
-            (route) => false, // Remove all previous routes from the stack
-          );
+          if (mounted) {
+            Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => Ownerpage()),
+              (route) => false, // Remove all previous routes from the stack
+            );
+          }
         } else {
           // Handle unknown role or any other cases
         }
@@ -80,17 +86,21 @@ class _LoginpageState extends State<Loginpage> {
         // Handle the case when user data (Role) is not found in Firestore
       }
     } on FirebaseAuthException catch (e) {
-      setState(() {
-        if (e.code == 'user-not-found' || e.code == 'wrong-password') {
-          errorMessage = 'Invalid email or password';
-        } else {
-          errorMessage = 'An error occurred. Please try again later.';
-        }
-      });
+      if (mounted) {
+        setState(() {
+          if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+            errorMessage = 'Invalid email or password';
+          } else {
+            errorMessage = 'An error occurred. Please try again later.';
+          }
+        });
+      }
     } catch (e) {
-      setState(() {
-        errorMessage = 'An error occurred. Please try again later.';
-      });
+      if (mounted) {
+        setState(() {
+          errorMessage = 'An error occurred. Please try again later.';
+        });
+      }
     }
   }
 
