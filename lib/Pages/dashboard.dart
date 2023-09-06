@@ -128,7 +128,7 @@ class _OwnerpageState extends State<Ownerpage> {
                 width: 400,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Colors.grey,
+                  color: Colors.grey.shade200,
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -139,7 +139,7 @@ class _OwnerpageState extends State<Ownerpage> {
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w500,
-                                color: Colors.white)),
+                                color: Color.fromARGB(255, 31, 29, 29))),
                         SizedBox(
                           height: 20,
                         ),
@@ -147,7 +147,8 @@ class _OwnerpageState extends State<Ownerpage> {
                             child: Text(
                           "$_vehicleCount",
                           style: const TextStyle(
-                              fontSize: 30, color: Colors.white),
+                              fontSize: 30,
+                              color: Color.fromARGB(255, 31, 29, 29)),
                         )),
                         Center(
                             child: ElevatedButton(
@@ -159,7 +160,9 @@ class _OwnerpageState extends State<Ownerpage> {
                           },
                           child: const Text(
                             "VIEW MORE",
-                            style: TextStyle(fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
                           ),
                         )),
                       ]),
@@ -172,8 +175,9 @@ class _OwnerpageState extends State<Ownerpage> {
                 height: 150,
                 width: 400,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.shade200,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -183,21 +187,25 @@ class _OwnerpageState extends State<Ownerpage> {
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w500,
-                                color: Colors.white)),
+                                color: Color.fromARGB(255, 31, 29, 29))),
                         SizedBox(
                           height: 20,
                         ),
                         Center(
                             child: Text(
                           "5",
-                          style: TextStyle(fontSize: 30, color: Colors.white),
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Color.fromARGB(255, 31, 29, 29)),
                         )),
                         Center(
                             child: ElevatedButton(
                           onPressed: () {},
                           child: Text(
                             "ENABLE LISTING",
-                            style: TextStyle(fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
                           ),
                         )),
                       ]),
@@ -210,8 +218,9 @@ class _OwnerpageState extends State<Ownerpage> {
                 height: 150,
                 width: 400,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.grey),
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.shade200,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -221,21 +230,25 @@ class _OwnerpageState extends State<Ownerpage> {
                             style: TextStyle(
                                 fontSize: 24,
                                 fontWeight: FontWeight.w500,
-                                color: Colors.white)),
+                                color: Color.fromARGB(255, 31, 29, 29))),
                         SizedBox(
                           height: 20,
                         ),
                         Center(
                             child: Text(
                           "500\$",
-                          style: TextStyle(fontSize: 30, color: Colors.white),
+                          style: TextStyle(
+                              fontSize: 30,
+                              color: Color.fromARGB(255, 31, 29, 29)),
                         )),
                         Center(
                             child: ElevatedButton(
                           onPressed: () {},
                           child: Text(
                             "TOP UP",
-                            style: TextStyle(fontWeight: FontWeight.w500),
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white),
                           ),
                         )),
                       ]),
@@ -245,6 +258,7 @@ class _OwnerpageState extends State<Ownerpage> {
           ),
         ),
       ),
+      backgroundColor: const Color.fromARGB(255, 134, 127, 127),
     );
   }
 }

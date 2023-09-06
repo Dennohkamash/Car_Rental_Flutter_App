@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp1/Auth/main_page.dart';
-import 'package:myapp1/Pages/dashboard.dart';
+
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:firebase_core/firebase_core.dart';
 import '../firebase_options.dart';
@@ -115,10 +115,3 @@ class _MyPageState extends State<MyPage> {
     );
   }
 }
-
-// final Shader linearGradient1 = LinearGradient(
-//   colors: <Color>[Color(0xFFFF1000), Color(0xFF2508FF)],
-// ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
-// final Shader linearGradient2 = LinearGradient(
-//   colors: <Color>[Color(0xFF2508FF), Color(0xFFFF1000)],
-// ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:myapp1/Pages/dashboard.dart';
 import 'package:myapp1/Pages/register_car.dart';
 
 class Vehiclelist extends StatefulWidget {
@@ -28,6 +29,7 @@ class _VehiclelistState extends State<Vehiclelist> {
           'imageUrl': document['imageUrl'],
           'transmission': document['transmission'],
           'model': document['model'],
+          'charge': document['charge'],
         });
       });
 
@@ -49,12 +51,15 @@ class _VehiclelistState extends State<Vehiclelist> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back), // Back icon
+          icon: const Icon(Icons.arrow_back), // Back icon
           onPressed: () {
-            Navigator.of(context).pop(); // Navigate to previous page
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Ownerpage()),
+            );
           },
         ),
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
@@ -76,16 +81,16 @@ class _VehiclelistState extends State<Vehiclelist> {
           );
         },
         tooltip: 'add vehicle',
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
       body: SingleChildScrollView(
         child: StreamBuilder<List<Map<String, dynamic>>>(
           stream: getVehicleDataStream(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              return Center(child: Text('Error loading data'));
+              return const Center(child: Text('Error loading data'));
             } else {
               List<Map<String, dynamic>> vehicleList = snapshot.data ?? [];
 
@@ -125,6 +130,24 @@ class _VehiclelistState extends State<Vehiclelist> {
                             vehicleList[index]['transmission'],
                             style: TextStyle(fontSize: 14),
                           ),
+                          SizedBox(height: 5),
+                          Text(
+                            "Charge per hour: \$${vehicleList[index]['charge']}",
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.blue),
+                          ),
+                          SizedBox(height: 10),
+                          ElevatedButton(
+                            onPressed: () {
+                              // TODO: Handle enabling listing
+                            },
+                            child: Text(
+                              "Enable Listing",
+                              style: TextStyle(fontWeight: FontWeight.w500),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -135,6 +158,7 @@ class _VehiclelistState extends State<Vehiclelist> {
           },
         ),
       ),
+      backgroundColor: Color.fromARGB(255, 134, 127, 127),
     );
   }
 }

@@ -19,6 +19,7 @@ class _RegistercarState extends State<Registercar> {
   TextEditingController _registrationPlateController = TextEditingController();
   TextEditingController _transmissionController = TextEditingController();
   TextEditingController _typeController = TextEditingController();
+  TextEditingController _chargeController = TextEditingController();
   TextEditingController _contactDetailsController = TextEditingController();
 
   Future<void> getImage() async {
@@ -51,6 +52,7 @@ class _RegistercarState extends State<Registercar> {
     String registrationPlate = _registrationPlateController.text;
     String transmission = _transmissionController.text;
     String type = _typeController.text;
+    String charge = _chargeController.text;
     String contactDetails = _contactDetailsController.text;
 
     String imagePath = 'vehicles/${DateTime.now().millisecondsSinceEpoch}.jpg';
@@ -71,6 +73,7 @@ class _RegistercarState extends State<Registercar> {
         'registrationPlate': registrationPlate,
         'transmission': transmission,
         'type': type,
+        'charge': charge,
         'contactDetails': contactDetails,
         'imageUrl': imageUrl,
       });
@@ -193,6 +196,29 @@ class _RegistercarState extends State<Registercar> {
                 controller: _typeController,
                 decoration: InputDecoration(
                   hintText: 'Enter Type',
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.grey.shade400),
+                  ),
+                  fillColor: Colors.grey.shade200,
+                  filled: true,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Text(
+                "CHARGE RATE PER HOUR IN \$:",
+                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18),
+              ),
+              TextFormField(
+                controller: _chargeController,
+                decoration: InputDecoration(
+                  hintText: 'Enter Charge',
                   contentPadding:
                       EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
                   enabledBorder: OutlineInputBorder(
